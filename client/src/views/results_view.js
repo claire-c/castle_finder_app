@@ -1,3 +1,4 @@
+const DetailView = require('./detail_view.js');
 
 const ResultView = function(resultContainer, allCastleData){
   this.resultContainer = resultContainer;
@@ -18,11 +19,12 @@ ResultView.prototype.renderListView = function () {
   // Create a a list item by newing up a nested view of resultDetailItem for every castle in the castle data array.
   const castlesArray = this.allCastleData;
   castlesArray.forEach((castle) => {
-    const resultListItem = document.createElement('li');
-    resultListItem.textContent = 'This has loaded successfully (test item).';
-    resultList.appendChild(resultListItem);
-  })
+    const detailView = new DetailView(castle).renderDetailView();
+    resultList.appendChild(detailView);
+  });
+
   this.resultContainer.appendChild(resultList);
+
 };
 
 module.exports = ResultView;
