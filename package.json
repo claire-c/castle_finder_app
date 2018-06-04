@@ -1,0 +1,23 @@
+{
+  "name": "wk_14_dream_team_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server:dev": "nodemon server/server.js",
+    "build": "webpack -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.17.5",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^3.0.1"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongodb": "^3.0.10"
+  }
+}
