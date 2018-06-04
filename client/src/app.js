@@ -1,6 +1,6 @@
 const FormView = require('./views/form_view.js');
 const Castles = require('./models/castles.js');
-
+const ContainerView = require('./views/container_view.js');
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,7 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const castles = new Castles();
   castles.subscribeToFormView();
-  castles.getDataAndReturnFromOurCastleAPI();
+
+  const container = document.querySelector('#container');
+  const containerView = new ContainerView(container);
+  containerView.subscribeToAllCastleData();
+
+
 
 
 });
