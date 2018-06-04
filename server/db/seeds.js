@@ -11,7 +11,7 @@ db.castleInfo.insertMany([
     "description": "Hailes Castle is a mainly 14th century castle near East Linton, East Lothian, and associated with the Wars of Independence and Mary Queen of Scots. It is situated on the River Tyne and features a chapel, vaulted basement bakehouse, brewhouse and several towers.",
     "price": 0,
     "trivia": ["The 14th century tower was used as a dovecot after it ceased to be occupied.", "It is one of Scotland's oldest stone castles, dating from the early 1200s."],
-    "latlng": [55.97239, 2.68412]
+    "latlng": [55.97239, -2.68412]
   },
   {
     "name": "Caerlaverock Castle",
