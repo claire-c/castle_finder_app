@@ -1,5 +1,6 @@
 const PubSub = require('../helpers/pub_sub.js');
 const ResultView = require('./results_view.js');
+const MapView = require('./map_view.js');
 
 
 const ContainerView = function (container){
@@ -14,6 +15,7 @@ ContainerView.prototype.subscribeToAllCastleData = function () {
     this.container.innerHTML = '';
     // We want to call render on the container once the container has received the castle data.
     this.renderResultView(evt.detail);
+    this.renderMapView(evt.detail);
   });
 
   // console log out castle data
@@ -38,8 +40,15 @@ ContainerView.prototype.renderResultView = function (allCastleData) {
   console.log('from render resultview method:', allCastleData);
 };
 
-ContainerView.prototype.renderMapView = function (unknown) {
+ContainerView.prototype.renderMapView = function (allCastleData) {
+  const mapViewDiv = document.createElement('div');
+  mapViewDiv.id = 'map-view';
+  const mapView = new MapView(mapViewDiv);
+  mapView.renderMap(allCastleData);
+  this.container.appendChild(mapViewDiv);
 
+  console.log('from render mapview method', allCastleData);
 };
+
 
 module.exports = ContainerView;
