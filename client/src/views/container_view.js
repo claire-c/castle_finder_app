@@ -42,9 +42,11 @@ ContainerView.prototype.renderResultView = function (allCastleData) {
 
 ContainerView.prototype.renderMapView = function (allCastleData) {
   const mapViewDiv = document.createElement('div');
-  mapViewDiv.id = 'map-view';
-  const mapView = new MapView(mapViewDiv);
-  mapView.renderMap(allCastleData);
+  const edinburghCoords = [55.86, -4.25];
+  const zoomLevel = 10;
+  mapViewDiv.id = 'mapid';
+  const mapView = new MapView(mapViewDiv, edinburghCoords, zoomLevel);
+  mapView.renderMap(); //TO DO add allCastleData.
   this.container.appendChild(mapViewDiv);
 
   console.log('from render mapview method', allCastleData);

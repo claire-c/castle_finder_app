@@ -1,15 +1,27 @@
-const MapView = function (div){
-this.div = div;
+const leaflet = require('leaflet');
+
+const MapView = function (mapDiv, coords, zoomLevel){
+this.mapDiv = mapDiv;
+this.coords = coords;
+this.zoomLevel = zoomLevel;
+this.leafletMap = null;
 
 }
 
-MapView.prototype.renderMap = function (allCastleData) {
-  // console.log('Under Construction');
-  const mapHeading = document.createElement('h2');
-  mapHeading.id = "map-view-heading";
-  mapHeading.textContent = "Map Placeholder";
-  this.div.appendChild(mapHeading);
+MapView.prototype.init = function () {
+  const openStreetMapUrl ='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  const openStreetMapTileLayer = new leaflet.TileLayer(openStreetMapUrl);
 
+  this.leafletMap = leaflet
+    .map(this.mapDiv)
+    .addLayer(openStreetMapTileLayer)
+    .setView(this.coords, this.zoomLevel);
+};
+
+MapView.prototype.renderMap = function () {
+  // console.log('Under Construction');
+  //map render
+  this.init();
 
 };
 
