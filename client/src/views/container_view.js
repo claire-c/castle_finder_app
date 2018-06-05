@@ -29,13 +29,17 @@ ContainerView.prototype.renderResultView = function (allCastleData) {
   resultViewDiv.id = 'result-view';
 
   // New up a result_view view and hand in the castleData and result_view div as arguments.
-  const resultView = new ResultView(resultViewDiv, allCastleData);
-  resultView.renderListView();
+  const resultView = new ResultView(resultViewDiv);
+  resultView.renderListView(allCastleData);
 
   // After calling the render we want to append the result_view div to the container div.
   this.container.appendChild(resultViewDiv);
 
   console.log('from render resultview method:', allCastleData);
+};
+
+ContainerView.prototype.renderMapView = function (unknown) {
+
 };
 
 module.exports = ContainerView;
