@@ -5,26 +5,32 @@ const ResultView = function(resultListDiv){
 }
 
 ResultView.prototype.renderListViewDiv = function (allCastleData) {
-  
+  this.renderListViewHeading();
+  this.renderListOfDetailViews(allCastleData);
+};
+
+ResultView.prototype.renderListViewHeading = function () {
   // Create a heading and for the result view container.
   const resultListHeading = document.createElement('h2');
   resultListHeading.id = "result-view-title";
   resultListHeading.textContent = "Results List:";
   this.resultListDiv.appendChild(resultListHeading);
+};
 
-  // Create an ordered list called result-list-view
-  const resultList = document.createElement('ol');
-  resultList.id = "result-view-list";
+ResultView.prototype.renderListOfDetailViews = function (allCastleData) {
 
-  // Create a a list item by newing up a nested view of resultDetailItem for every castle in the castle data array.
-  const castlesArray = allCastleData;
-  castlesArray.forEach((castle) => {
-    const detailView = new DetailView(castle);
-    resultList.appendChild(detailView.renderDetailView());
-  });
+    // Create an ordered list called result-list-view
+    const resultList = document.createElement('div');
+    resultList.id = "result-view-list";
 
-  this.resultListDiv.appendChild(resultList);
+    // Create a a list item by newing up a nested view of resultDetailItem for every castle in the castle data array.
+    const castlesArray = allCastleData;
+    castlesArray.forEach((castle) => {
+      const detailView = new DetailView(castle);
+      resultList.appendChild(detailView.renderDetailView());
+    });
 
+    this.resultListDiv.appendChild(resultList);
 };
 
 module.exports = ResultView;
