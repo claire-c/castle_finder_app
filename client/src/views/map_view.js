@@ -23,7 +23,13 @@ MapView.prototype.renderMap = function () {
   // console.log('Under Construction');
   //map render
   this.init();
+  this.addMarker(this.coords);
+  this.addMarker([55.7, -3.6]);
 
+};
+
+MapView.prototype.addMarker = function (coords) {
+leaflet.marker(coords).addTo(this.leafletMap);
 };
 
 
