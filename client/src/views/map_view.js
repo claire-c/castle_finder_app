@@ -1,10 +1,10 @@
 const leaflet = require('leaflet');
 const PubSub = require('../helpers/pub_sub.js');
 
-const MapView = function (mapDiv, coords, zoomLevel, allCastleData){
+const MapView = function (mapDiv, userLocation, zoomLevel, allCastleData){
   this.allCastleData = allCastleData;
   this.mapDiv = mapDiv;
-  this.coords = coords;
+  this.userLocation = userLocation;
   this.zoomLevel = zoomLevel;
   this.leafletMap = null;
 
@@ -16,7 +16,7 @@ MapView.prototype.init = function () {
 
   this.leafletMap = leaflet
   .map(this.mapDiv)
-  .setView(this.coords, this.zoomLevel)
+  .setView(this.userLocation, this.zoomLevel)
   .addLayer(openStreetMapTileLayer);
 };
 
@@ -26,8 +26,16 @@ MapView.prototype.renderMap = function () {
   this.init();
   // this.getLatLngsArray();
   this.populateAllPins();
+  this.addUserLocationPin();
 
 
+};
+
+MapView.prototype.addUserLocationPin = function () {
+  leaflet.marker(this.userLocation)
+  .addTo(this.leafletMap)
+  .bindPopup("You are here!")
+  .openPopup();
 };
 
 MapView.prototype.addMarker = function (coords, castleName, castlePrice) {
