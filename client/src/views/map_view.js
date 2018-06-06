@@ -24,29 +24,32 @@ MapView.prototype.renderMap = function () {
   // console.log('Under Construction');
   //map render
   this.init();
-  this.getLatLngsArray();
+  // this.getLatLngsArray();
   this.populateAllPins();
 
 
 };
 
-MapView.prototype.addMarker = function (coords) {
-  leaflet.marker(coords).addTo(this.leafletMap);
+MapView.prototype.addMarker = function (coords, castleName, castlePrice) {
+  leaflet.marker(coords)
+  .addTo(this.leafletMap)
+  .bindPopup(castleName + " £" + castlePrice);
+  // .openPopup();
 };
 
-MapView.prototype.getLatLngsArray = function () {
-  const latLngArray = this.allCastleData.map((castle) => {
-    return castle.latlng});
-    console.log('Map View extraction of latlngs', latLngArray);
-    return latLngArray;
-  };
+// MapView.prototype.getLatLngsArray = function () {
+//   const latLngArray = this.allCastleData.map((castle) => {
+//     return castle.latlng});
+//     console.log('Map View extraction of latlngs', latLngArray);
+//     return latLngArray;
+//   };
 
 MapView.prototype.populateAllPins = function () {
-    const castlesLatLngs = this.getLatLngsArray();
-    castlesLatLngs.forEach((castle) => {
-      this.addMarker(castle);
-    });
-  };
+  const castles = this.allCastleData;
+  castles.forEach((castle) => {
+    this.addMarker(castle.latlng, castle.name, castle.price);
+  });
+};
 
 
-  module.exports = MapView;
+module.exports = MapView;
