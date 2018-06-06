@@ -42,8 +42,8 @@ ContainerView.prototype.renderResultView = function (allCastleData) {
 
 ContainerView.prototype.renderMapView = function (allCastleData) {
   const mapViewDiv = document.createElement('div');
-  const userLocation = [55.86, -4.25];
-  const zoomLevel = 10;
+  const userLocation = [56.83, -4.22];
+  const zoomLevel = 7.25;
   mapViewDiv.id = 'mapid';
   const mapView = new MapView(mapViewDiv, userLocation, zoomLevel, allCastleData);
    //TO DO add allCastleData.
