@@ -32,7 +32,15 @@ MapView.prototype.renderMap = function () {
 };
 
 MapView.prototype.addUserLocationPin = function () {
-  leaflet.marker(this.userLocation)
+   var homeIcon = leaflet.icon({
+      iconUrl: 'https://image.flaticon.com/icons/svg/25/25694.svg',
+      iconSize:     [30, 30], // size of the icon
+      iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+      popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
+  });
+
+
+  leaflet.marker(this.userLocation, {icon: homeIcon})
   .addTo(this.leafletMap)
   .bindPopup("You are here!")
   .openPopup();
