@@ -5,6 +5,14 @@ const MapView = require('./map_view.js');
 
 const ContainerView = function (container){
   this.container = container;
+  this.userLocation = null;
+};
+
+ContainerView.prototype.bindEvents = function () {
+  this.addLatLngListener();
+  this.subscribeToAllCastleData();
+
+
 };
 
 ContainerView.prototype.subscribeToAllCastleData = function () {
@@ -42,15 +50,23 @@ ContainerView.prototype.renderResultView = function (allCastleData) {
 
 ContainerView.prototype.renderMapView = function (allCastleData) {
   const mapViewDiv = document.createElement('div');
-  const userLocation = [56.83, -4.22];
+  const userLocation = this.userLocation;
+  console.log("render Map View",userLocation);
   const zoomLevel = 7.25;
   mapViewDiv.id = 'mapid';
   const mapView = new MapView(mapViewDiv, userLocation, zoomLevel, allCastleData);
-   //TO DO add allCastleData.
+  //TO DO add allCastleData.
   this.container.appendChild(mapViewDiv);
   mapView.renderMap();
 
   console.log('from render mapview method', allCastleData);
+};
+
+ContainerView.prototype.addLatLngListener = function () {
+  PubSub.subscribe('FormView:Receive-Data-From-Form', (evt) => {
+    console.log(evt.detail);
+    this.userLocation = evt.detail;
+  })
 };
 
 

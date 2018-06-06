@@ -8,10 +8,10 @@ const FormView = function(form) {
 FormView.prototype.setUpFormListener = function () {
   this.form.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    console.log('Listen', evt.target.user_inputted_location.value);
-    const inputData = evt.target.user_inputted_location.value;
+    console.log('Listen', [parseFloat(evt.target.user_lat.value), parseFloat(evt.target.user_lng.value)]);
+    const inputLatLngData = [parseFloat(evt.target.user_lat.value), parseFloat(evt.target.user_lng.value)];
 
-    PubSub.publish('FormView:Receive-Data-From-Form', inputData);
+    PubSub.publish('FormView:Receive-Data-From-Form', inputLatLngData);
 
   });
 };

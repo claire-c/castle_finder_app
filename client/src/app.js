@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const container = document.querySelector('#container');
   const containerView = new ContainerView(container);
-  containerView.subscribeToAllCastleData();
+  containerView.bindEvents();
 
 
 
