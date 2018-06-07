@@ -6,6 +6,10 @@ body {
   font-family: 'MedievalSharp', cursive;
 }
 
+p{
+font-size: 12px;
+}
+
 h1 {
   font-size: 70px;
   background-color: white;

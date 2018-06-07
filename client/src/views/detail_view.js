@@ -11,8 +11,8 @@ DetailView.prototype.renderDetailView = function () {
   listItemHeading.textContent = this.castle.name;
   listItem.appendChild(listItemHeading);
 
-  listItemPrice = document.createElement('h4');
-  listItemPrice.textContent ="£ " + this.castle.price;
+  listItemPrice = document.createElement('p');
+  listItemPrice.textContent = this.castle.description;
   listItem.appendChild(listItemPrice);
 
   return listItem;
