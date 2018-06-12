@@ -1,36 +1,38 @@
 const DetailView = require('./detail_view.js');
 
+//constructor for ResultsView.
 const ResultView = function(resultListDiv){
   this.resultListDiv = resultListDiv;
 }
 
-ResultView.prototype.renderListViewDiv = function (allCastleData) {
-  this.renderListViewHeading();
+//renders the resultView comprised of detail views and header. Called in containerView.
+ResultView.prototype.renderResultView = function (allCastleData) {
+  this.renderResultViewHeading();
   this.renderListOfDetailViews(allCastleData);
 };
 
-ResultView.prototype.renderListViewHeading = function () {
-  // Create a heading and for the result view container.
+// Create a heading and for the result view container.
+ResultView.prototype.renderResultViewHeading = function () {
   const resultListHeading = document.createElement('h2');
   resultListHeading.id = "result-view-title";
   resultListHeading.textContent = "Results List:";
   this.resultListDiv.appendChild(resultListHeading);
 };
 
+//To render detail views for each castle.
 ResultView.prototype.renderListOfDetailViews = function (allCastleData) {
 
-    // Create an ordered list called result-list-view
-    const resultList = document.createElement('div');
-    resultList.id = "result-view-list";
+  const resultList = document.createElement('div');
+  resultList.id = "result-view-list";
 
-    // Create a a list item by newing up a nested view of resultDetailItem for every castle in the castle data array.
-    const castlesArray = allCastleData;
-    castlesArray.forEach((castle) => {
-      const detailView = new DetailView(castle);
-      resultList.appendChild(detailView.renderDetailView());
-    });
+  // News up a detailView for each castle and adds to the result list div.
+  const castlesArray = allCastleData;
+  castlesArray.forEach((castle) => {
+    const detailView = new DetailView(castle);
+    resultList.appendChild(detailView.renderDetailView());
+  });
 
-    this.resultListDiv.appendChild(resultList);
+  this.resultListDiv.appendChild(resultList);
 };
 
 module.exports = ResultView;

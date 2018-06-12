@@ -1,4 +1,4 @@
-
+//constructor for DetailView.
 const DetailView = function(castle){
   this.castle = castle;
 };
@@ -11,9 +11,9 @@ DetailView.prototype.renderDetailView = function () {
   listItemHeading.textContent = this.castle.name;
   listItem.appendChild(listItemHeading);
 
-  listItemPrice = document.createElement('p');
-  listItemPrice.textContent = this.castle.description;
-  listItem.appendChild(listItemPrice);
+  listItemDescription = document.createElement('p');
+  listItemDescription.textContent = this.castle.description;
+  listItem.appendChild(listItemDescription);
 
   return listItem;
 };
