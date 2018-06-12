@@ -4,11 +4,10 @@ const ContainerView = require('./views/container_view.js');
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Hello');
 
   const form = window.document.querySelector('#form');
   const formView = new FormView(form);
-  formView.setUpFormListener();
+  formView.getInputFromUser();
 
   const castles = new Castles();
   castles.subscribeToFormView();
@@ -16,8 +15,5 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('#container');
   const containerView = new ContainerView(container);
   containerView.bindEvents();
-
-
-
 
 });

@@ -6,7 +6,7 @@ const ResultView = function(resultListDiv){
 }
 
 //renders the resultView comprised of detail views and header. Called in containerView.
-ResultView.prototype.renderResultView = function (allCastleData) {
+ResultView.prototype.render = function (allCastleData) {
   this.renderResultViewHeading();
   this.renderListOfDetailViews(allCastleData);
 };

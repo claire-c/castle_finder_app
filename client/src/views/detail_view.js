@@ -3,6 +3,7 @@ const DetailView = function(castle){
   this.castle = castle;
 };
 
+//renders each detailView inside a div.
 DetailView.prototype.renderDetailView = function () {
   listItem = document.createElement('div');
   listItem.id = this.castle.name;
